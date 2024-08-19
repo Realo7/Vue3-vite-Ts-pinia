@@ -1,19 +1,36 @@
+<!-- ref,reactive -->
+<!-- ref支持所有类型，reactive支持引用类型
+ref取值，赋值都需要加.value,reactive不需要.value
+reactive 不能直接赋值，否则破坏响应式对象结构
+解决方案 数组：1.使用push加解构赋值，2.使用对象，把arr当成对象一个属性，直接赋值 -->
 <script setup lang="ts">
+let list: Array<string> = reactive<Array<string>>(['a', 'b', 'c'])
+let read = readonly(list)
+const obj: any = shallowReactive({ prop: { name: 'shadow' }, age: 112 })
+const add = () => {
+  setTimeout(() => {
+
+    obj.prop.name = "wdf"
+    console.log(obj);
+
+  }, 300);
+}
+const toRefs = <T extends object>(object: T) => { }
+import { reactive, readonly, shallowReactive } from 'vue';
 import HelloWorld from './components/HelloWorld.vue'
 import Nav from './components/nn.vue'
 </script>
 
 <template>
+  {{ obj }}
+  <!-- <HelloWorld msg="Vite + Vue" /> -->
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <ul>
+      <li v-for="(item, index) in list" :key="index">{{ item }}</li>
+    </ul>
+    <button @click="add">add</button>
   </div>
   <Nav />
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>

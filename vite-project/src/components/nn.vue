@@ -16,7 +16,7 @@ type M = {
 }
 const man = ref<M>({ name1: '小满' })
 const man2 = shallowRef({ name1: '小' })
-console.log(isRef(man));
+// console.log(isRef(man));
 
 const change = () => {
   // man.value.name1 = '小'
