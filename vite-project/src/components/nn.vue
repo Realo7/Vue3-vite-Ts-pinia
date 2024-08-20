@@ -23,6 +23,15 @@ const change = () => {
   man2.value = { name1: '小xxxxx' }
 
 }
+
+let activeEffect;
+export const effect = (fn: Function) => {
+  const effect = function () {
+    activeEffect = effect
+    fn()
+    effect()
+  }
+}
 </script>
 <style scoped>
 .container {
