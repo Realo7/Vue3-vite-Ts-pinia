@@ -1,12 +1,20 @@
 <template>
     <div class="hur-content">
         Content
-        <div class="hur-content__items" v-for="item in 100">{{ item }}</div>
+        <!-- <div class="hur-content__items" v-for="item in 100">{{ item }}</div> -->
+        <div>{{ custom }}</div>
+        <div>{{ arr }}</div>
     </div>
 </template>
 <script setup lang='ts'>
-import { ref, reactive } from 'vue'
+const props = defineProps<{
+    custom: object,
+    arr: number[]
+}>()
+
+import { ref, reactive, defineProps } from 'vue'
 import type { Ref } from 'vue'
+
 </script>
 <style scoped lang="scss">
 @include b(content) {

@@ -5,12 +5,15 @@
         </div>
         <div class="hur-box__right">
             <Header></Header>
-            <Content></Content>
+            <Content :custom="propdate" :arr="[1, 2, 3, 33, 3]"></Content>
         </div>
 
     </div>
 </template>
 <script setup lang='ts'>
+const propdate = reactive({ name: "ss", age: 12 })
+
+
 import Header from './Header/index.vue'
 import Menu from './Menu/index.vue'
 import Content from './Content/index.vue'
