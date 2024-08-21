@@ -1,0 +1,36 @@
+$namespace: 'hur' !default;
+// 使用!default表示如果这个变量在之前没有被定义过，那么就使用这个默认值。如果在其他地方已经定义了$namespace变量，那么这个默认值就会被覆盖。
+$block-sel: '-' !default;
+$elem_sel: '__' !default;
+$mod_sel: '--' !default;
+
+@mixin bfc {
+  height: 100%;
+  overflow: hidden;
+}
+
+@mixin b($block) {
+  $B: #{$namespace + $block-sel + $block}; //hur-$block
+  .#{$B} {
+    @content;
+  }
+}
+
+.xm-block__inner {
+}
+@mixin e($el) {
+  $selector: &; //获取父级选择器名称
+  @at-root {
+    #{$selector + $elem_sel + $el} {
+      @content;
+    }
+  }
+}
+@mixin m($m) {
+  $selector: &; //获取父级选择器名称
+  @at-root {
+    #{$selector + $mod_sel + $m} {
+      @content;
+    }
+  }
+}
