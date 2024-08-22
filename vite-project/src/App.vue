@@ -33,7 +33,11 @@ watch(uuu, () => {
     <!-- <layout></layout> -->
     <input type="text" v-model="uuu">
     {{ iii }}
-    <component :is="iii"></component>
+    <component :is="iii">
+      <template v-slot="slotProps">
+        <div>{{ slotProps.data }}</div>
+      </template>
+    </component>
   </div>
 </template>
 <style lang="scss">
