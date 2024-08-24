@@ -1,7 +1,9 @@
 <template>
     <div class="hur-box">
         <div>
-            <Menu></Menu>
+            <slot name="color"></slot>
+           父组件中注入的colors{{ color }}
+            <!-- <Menu></Menu> -->
         </div>
         <div class="hur-box__right">
             <Header></Header>
@@ -20,8 +22,10 @@ import Content from './Content/index.vue'
 
 
 
-import { ref, reactive } from 'vue'
+import { ref, reactive ,inject} from 'vue'
 import type { Ref } from 'vue'
+
+const color=inject<Ref<string>>('color')
 </script>
 <style lang='scss' scoped>
 @include b(box) {
