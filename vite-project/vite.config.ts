@@ -11,4 +11,10 @@ export default defineConfig({
       },
     },
   },
+  resolve:{
+    alias: {
+      // 设置别名 '@' 指向 'src' 目录
+      '@': '/src',
+    },
+  }
 })

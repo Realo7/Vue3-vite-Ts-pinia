@@ -6,6 +6,9 @@
 <script setup lang='ts'>
 import { ref, reactive } from 'vue'
 import type { Ref } from 'vue'
+
+import eventBus from '@/tools/mitt';
+
 </script>
 <style lang='scss' scoped>
 @include b(menu) {
