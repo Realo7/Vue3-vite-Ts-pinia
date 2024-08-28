@@ -45,6 +45,7 @@ const vMove: Directive<any, void> = (el: HTMLElement, binding: DirectiveBinding)
   <div id="app">
     <!-- <layout>
     </layout> -->
+    <div>{{ $filter.format('hurui') }}</div>
     <div>我是父组件{{ isShow }}</div>
     <button @click="open">开关</button>
     <hr>
