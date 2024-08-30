@@ -7,51 +7,22 @@ import Bvue from './example/B.vue'
 import Cvue from './example/C.vue'
 import vModel from './components/vModel.vue';
 
-const colorVal = ref('pink')
-provide('color', colorVal)
-
-const open = () => {
-  isShow.value = !isShow.value
+const someAsyncOperation = () => {
+  return Promise.resolve(333);
 }
-const text = ref('我是胡睿')
-const isShow = ref<Boolean>(true)
-
-const vMove: Directive<any, void> = (el: HTMLElement, binding: DirectiveBinding) => {
-
-  mounted: (el: any) => {
-  }
-  const moveElement = el.firstChild as HTMLElement
-  console.log(moveElement);
-
-  const mousedown = (e: MouseEvent) => {
-    let x = e.clientX - el.offsetLeft
-    let y = e.clientY - el.offsetTop
-    const move = (e: MouseEvent) => {
-      el.style.left = e.pageX - x + 'px'
-      el.style.top = e.pageY - y + 'px'
-    }
-    document.addEventListener('mousemove', move)
-    document.addEventListener('mouseup', () => {
-      document.removeEventListener('mousemove', move)
-    })
-  }
-
-  moveElement.addEventListener('mousedown', mousedown)
-
+async function example() {
+  const result = await someAsyncOperation(); // 这里是异步等待
+  console.log(result); // 这行代码会在 await 完成后执行，具有异步性质
+  const synchronousCode = 1 + 2; // 这行代码是同步的，会立即执行
+  console.log(synchronousCode);
 }
+example()
 </script>
 
 <template>
   <div id="app">
-    <!-- <layout>
-    </layout> -->
-    <div>{{ $filter.format('hurui') }}</div>
-    <div>我是父组件{{ isShow }}</div>
-    <button @click="open">开关</button>
-    <hr>
-    {{ text }}
-    <hr>
-    <vModel v-move v-model:text1.isBT="text" v-model="isShow"></vModel>
+    <Avue></Avue>
+    <button @click="example">1111111</button>
   </div>
 </template>
 <style lang="scss">
